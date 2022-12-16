@@ -10,6 +10,6 @@ Download from the [latest release](https://github.com/adventHymnals/openUtau/rel
 Or use the commands below:
 
 ```bash
-curl --silent "https://api.github.com/repos/adventHymnals/openUtauy/releases/latest"|   grep "browser_download_url.*amd64.deb" | head -n 1 | cut -d : -f 2,3 | tr -d \"  | xargs wget -O tmp.deb && sudo dpkg -i tmp.deb
+curl --silent "https://api.github.com/repos/adventHymnals/openUtau/releases/latest"|   grep "browser_download_url.*amd64.deb" | head -n 1 | cut -d : -f 2,3 | tr -d \"  | xargs wget -O tmp.deb && sudo dpkg -i tmp.deb
 ```
 
