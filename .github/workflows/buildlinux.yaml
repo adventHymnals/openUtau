@@ -1,0 +1,56 @@
+# Name of workflow
+name: Release
+
+# trigger
+on:
+  push:
+    tags:
+      - "v*"
+
+# jobs
+jobs:
+  build-linux-packages:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Create debs
+        run: |
+          ./build.sh
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Rename files
+        run: VER=$(echo $RELEASE_VERSION |sed -e "s/v//" | sed -e "$ s/\(.*\)\./\1-/") && for file in ./installer/*.deb; do newFile=$(echo $file |sed -e "s/_1.2-1/_$(echo $VER)/"); mv $file $newFile; done 
+        shell: bash
+      - name: Create Release
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            console.log('environment', process.versions);
+            
+            const fs = require('fs').promises;
+            
+            const { repo: { owner, repo }, sha } = context;
+            console.log({ owner, repo, sha });
+
+            const release = await github.repos.createRelease({
+              owner, repo,
+              tag_name: process.env.RELEASE_VERSION,
+              draft: false,
+              target_commitish: sha
+            });
+
+            console.log('created release', { release });
+        
+            for (let file of await fs.readdir('./installer')) {
+              console.log('uploading', file);
+              if(file.match(/\.deb$/) === null) continue
+
+              await github.repos.uploadReleaseAsset({
+                owner, repo,
+                release_id: release.data.id,
+                name: file,
+                data: await fs.readFile(`./installer/${file}`)
+              });            
+            }

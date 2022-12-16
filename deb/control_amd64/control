@@ -1,0 +1,7 @@
+Package: openUtau
+Version: 1.0
+Architecture: amd64
+Maintainer: Brian Onang'o <surgbc@gmail.com>
+Description: Open Utau installer for linux.
+ OpenUtau for Linux
+ 
