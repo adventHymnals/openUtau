@@ -1,4 +1,5 @@
 debs:
+	rm -rf installer
 	mkdir -p installer/openUtau_1.2-1_amd64/opt/
 	mkdir -p installer/openUtau_1.2-1_i386/opt/
 	mkdir -p installer/openUtau_1.2-1_arm64/opt/
