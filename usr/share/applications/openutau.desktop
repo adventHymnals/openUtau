@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenUtau
+Comment=Open singing synthesis platform / Open source UTAU successor
+GenericName=Open Utau
+Exec=openutau
+Icon=openutau
+Type=Application
+StartupNotify=false
+Categories=AudioVideo;Audio;Midi;Multimedia;
+Keywords=openutau;

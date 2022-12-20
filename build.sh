@@ -5,4 +5,5 @@ curl --silent "https://api.github.com/repos/stakira/OpenUtau/releases/latest"|  
 mkdir -p openUtau
 tar -xf OpenUtau.tar.gz -C openUtau
 mv openUtau/OpenUtau  openUtau/openUtau 
+rm -rf installer
 make

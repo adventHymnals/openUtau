@@ -1,3 +1,13 @@
 #!/bin/bash
+#
+# Copyright (c) Advent Hymnals. All rights reserved.
+# Licensed under the MIT License.
 
+# Symlink bin command to /usr/local/bin
+rm -f /usr/local/bin/openutau
 ln -s /opt/openUtau/openUtau /usr/local/bin/openutau
+
+# Install the desktop entry
+if hash update-desktop-database 2>/dev/null; then
+	update-desktop-database
+fi

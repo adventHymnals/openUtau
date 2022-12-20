@@ -1,26 +1,10 @@
 debs:
-	# mkdir -p installer/openUtau_1.2-1_amd64/usr/local/bin
-	# mkdir -p installer/openUtau_1.2-1_i386/usr/local/bin
-	# mkdir -p installer/openUtau_1.2-1_arm64/usr/local/bin
 	mkdir -p installer/openUtau_1.2-1_amd64/opt/
 	mkdir -p installer/openUtau_1.2-1_i386/opt/
 	mkdir -p installer/openUtau_1.2-1_arm64/opt/
-	mkdir -p installer/openUtau_1.2-1_amd64/usr/share/applications/
-	mkdir -p installer/openUtau_1.2-1_i386/usr/share/applications/
-	mkdir -p installer/openUtau_1.2-1_arm64/usr/share/applications/
-
-	mkdir -p installer/openUtau_1.2-1_amd64/usr/share/pixmaps/
-	mkdir -p installer/openUtau_1.2-1_i386/usr/share/pixmaps/
-	mkdir -p installer/openUtau_1.2-1_arm64/usr/share/pixmaps/
-	
-	cp openutau.desktop installer/openUtau_1.2-1_amd64/usr/share/applications/
-	cp openutau.desktop installer/openUtau_1.2-1_arm64/usr/share/applications/
-	cp openutau.desktop installer/openUtau_1.2-1_i386/usr/share/applications/
-
-	cp openutau.svg installer/openUtau_1.2-1_amd64/usr/share/pixmaps/
-	cp openutau.svg installer/openUtau_1.2-1_arm64/usr/share/pixmaps/
-	cp openutau.svg installer/openUtau_1.2-1_i386/usr/share/pixmaps/
-
+	cp -r usr installer/openUtau_1.2-1_amd64/
+	cp -r usr installer/openUtau_1.2-1_i386/
+	cp -r usr installer/openUtau_1.2-1_arm64/
 
 	mkdir -p installer/openUtau_1.2-1_i386/DEBIAN
 	mkdir -p installer/openUtau_1.2-1_amd64/DEBIAN
